@@ -96,7 +96,7 @@ class ListarAlunosFragment : Fragment() {
         }
         viewModel.alunoExcluido.observe(viewLifecycleOwner){
             if(it != null && it == true){
-                Toast.makeText(view.context,"ALUNO EXCLUIDO COM SUCESSO!", Toast.LENGTH_LONG).show()
+                Toast.makeText(view.context,"CADASTRO EXCLUIDO COM SUCESSO!", Toast.LENGTH_LONG).show()
                 lifecycleScope.launch {
                     viewModel.alterarStatusExclusao(false)
                 }
