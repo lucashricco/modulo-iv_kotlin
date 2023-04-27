@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "451350070257",
+    "firebase_url": "https://riccoandroidigti-default-rtdb.firebaseio.com",
+    "project_id": "riccoandroidigti",
+    "storage_bucket": "riccoandroidigti.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451350070257:android:bec6dd2f4c13ff75f47a50",
+        "android_client_info": {
+          "package_name": "br.com.igti.modulo_iv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "451350070257-kg2cq8bprt1vo11o0udbdn7ip19lq1f5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDa27FrNIHPfVmN6q2dZ3GH1E-eiZpr0g4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "451350070257-kg2cq8bprt1vo11o0udbdn7ip19lq1f5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
