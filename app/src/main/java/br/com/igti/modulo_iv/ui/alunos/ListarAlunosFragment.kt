@@ -2,6 +2,7 @@ package br.com.igti.modulo_iv.ui.alunos
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import br.com.igti.modulo_iv.databinding.FragmentListarAlunosBinding
 import br.com.igti.modulo_iv.ui.alunos.adapter.AlunoAdapter
 import br.com.igti.modulo_iv.ui.alunos.adapter.AlunoListener
 import br.com.igti.modulo_iv.viewmodel.ListarAlunoViewModel
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.launch
 
 
@@ -49,6 +51,19 @@ class ListarAlunosFragment : Fragment() {
         binding.recyclerAluno.layoutManager = LinearLayoutManager(view.context)
         binding.recyclerAluno.addItemDecoration(DividerItemDecoration(view.context, DividerItemDecoration.VERTICAL))
 
+
+        //listagem simples de alunos atraves do firebase, vai trazr apenas os dados no log do android studio
+        val database = FirebaseDatabase.getInstance()
+        val ref = database.getReference("alunos")
+        ref.get().addOnSuccessListener {
+            Log.i("firebase1","Got value ${it.value}")
+        }.addOnFailureListener {
+            Log.e("firebase","Erro ao listar aluno",it)
+        }
+
+
+
+        //listando alunos com retrofit,json
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             viewModel.listarAlunos()
         }
