@@ -10,6 +10,7 @@ import br.com.igti.modulo_iv.data.remote.IAlunoRepository
 import br.com.igti.modulo_iv.data.remote.RetrofitClient
 import br.com.igti.modulo_iv.data.remote.dto.AlunoResponseDTO
 import br.com.igti.modulo_iv.data.remote.dto.MessageDTO
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -83,6 +84,14 @@ class ListarAlunoViewModel(
     }
 
     fun excluirAlunos(id: String){
+
+        //excluindo registros no firebase
+        val database = FirebaseDatabase.getInstance()
+        val ref = database.getReference("alunos").child("igti2022")
+        ref.removeValue()
+
+
+        //excluindo registros no json
         viewModelScope.launch(dispatcher) {
             repository.excluirAlunos(id).enqueue(object : Callback<MessageDTO>{
                 override fun onResponse(

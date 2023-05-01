@@ -20,6 +20,7 @@ import br.com.igti.modulo_iv.ui.alunos.adapter.AlunoAdapter
 import br.com.igti.modulo_iv.ui.alunos.adapter.AlunoListener
 import br.com.igti.modulo_iv.viewmodel.AlterarAlunoViewModel
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.util.*
@@ -54,6 +55,18 @@ class AlterarAlunoFragment : Fragment() {
 
 
         binding.btnSalvar.setOnClickListener {
+
+            //alterando os dados no firebase, atualização simples, com a gente mesmo passando o paramentro
+            val database = FirebaseDatabase.getInstance()
+            val ref = database.getReference("alunos").child("igti2022")
+            val update : MutableMap<String,Any> = HashMap()
+            update["nome"] = "Lucas"
+            update["idade"] = "25"
+            ref.updateChildren(update)
+
+
+
+           //alterando o json
             viewLifecycleOwner.lifecycleScope.launch {
                 viewModel.alterarAlunos(
                     id = binding.edtId.text.toString(),
